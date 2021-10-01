@@ -1,0 +1,219 @@
+*** Settings ***
+Library  SeleniumLibrary
+Resource  ../Resources/CommonKeywork.robot
+Resource  ../PageObject/CommonLocator.robot
+
+
+*** Variables ***
+${Browser}        chrome
+${SiteUrl}        https://demoqa.com/
+${FullName}       Nguyễn Văn Tú
+${currentAddress}       Hanoi
+${permanentAddress}       NgheAn
+${Delay}          5s
+${FisrtName}      Nguyễn Văn
+${LastName}       Tú
+${Email}          tu@gmail.com
+${Mobile}         0123456789
+${Subjects}       English
+${CurrentAddress}  Hà Nội
+${Age}             27
+${Salary}             101010
+${Department}             hihi
+*** Test Cases ***
+#TC1
+#    Open LinkedinPage   ${SiteUrl}   ${Browser}
+#    Click Element       ${Elements}
+#    Click Element       ${Elememts_TextBox}
+#    Input Text    ${Elements_TextBox_userName}    ${FullName}
+#    Input Text    ${Elements_TextBox_Email}    ${Email}
+#    Input Text    ${Elements_TextBox_currentAddress}    ${currentAddress}
+#    Input Text    ${Elements_TextBox_permanentAddress}     ${permanentAddress}
+#    Execute JavaScript      window.scrollTo(0, 400)
+#    click element    ${Button_Submit}
+#    Element Should Contain    //p[@id = 'name']   Nguyễn Văn Tú
+#    Element Should Contain    //p[@id = 'email']   nvtu@gmail.com
+#    Element Should Contain    //p[@id = 'currentAddress']   Hanoi
+#    Element Should Contain    //p[@id = 'permanentAddress']   NgheAn
+#
+#TC2
+#    Open LinkedinPage   ${SiteUrl}   ${Browser}
+#    Click Element       ${Elements}
+#    Click Element       ${Elements_CheckBox}
+#    Click Element       ${Elements_CheckBox_Home}
+#    Checkbox Should Be Selected   ${Elements_CheckBox_Selected}
+#    ${text}   get text   ${Elements_CheckBox_Result}
+#    Element Should Contain   ${Elements_CheckBox_Result}     ${text}
+#    Click Element        ${Elements_CheckBox_Home}
+#    Element Should Not Be Visible   ${Elements_CheckBox_Result}
+#    Checkbox Should Not Be Selected   ${Elements_CheckBox_Selected}
+#
+#TC3
+#     Open LinkedinPage   ${SiteUrl}   ${Browser}
+#     Click Element       ${Elements}
+#     Click Element       ${Elements_RadioButton}
+#     Element Should Be Disabled   ${RadioButton_Disabled_No}
+#     Click Element   ${Elements_RadioButton_Yes}
+#     Element Should Contain    ${Elements_Radio_Result}    You have selected Yes
+#     Click Element  ${Elements_RadioButton_Impressive}
+#     Element Should Contain    ${Elements_Radio_Result}    You have selected Impressive
+#     ${checked}  Get Element Attribute   yesRadio   checked
+#     log to console   ${checked}
+#     should be equal as strings    ${checked}   None
+#
+#
+#TC4
+#     Open LinkedinPage   ${SiteUrl}   ${Browser}
+#     Click Element       ${Elements}
+#     Scroll
+#     Click Element       ${Elements_Form}
+#     Click Element       ${Elements_Form_PF}
+#     Input Text    ${Forms_PF_FirstName}    ${FisrtName}
+#     Input Text    ${Forms_PF_LastName}   ${LastName}
+#     Input Text    ${Forms_PF_Email}     ${Email}
+#     Click Element    ${Forms_PF_Gender_Male}
+#     Input Text    ${Forms_PF_Mobile}   ${Mobile}
+#     Click Element  ${Forms_PF_Hobbies_Sport}
+#     Input Text    ${Forms_PF_currentAddress}    ${CurrentAddress}
+#     Scroll
+#     Click Element   ${Button_Submit}
+#     ${textDataTable}   get text   ${Forms_PF_text_table}
+#     log to console  ${textDataTable}
+#     Page Should Contain    ${textDataTable}
+#     Scroll Element Into View    ${Forms_PF_ButtonClose}
+#     Set Focus To Element   ${Forms_PF_ButtonClose}
+#     Click Element   ${Forms_PF_ButtonClose}
+#
+#
+#TC5
+#    Open LinkedinPage   https://www.demoqa.com/dynamic-properties   ${Browser}
+#    Wait Until Element Is Enabled  ${Elements_DB_Button_WillEnable5s}
+#    click element   ${Elements_DB_Button_WillEnable5s}
+#    Reload Page
+#    Wait Until Element Is Visible  ${Elements_DB_Button_VisibleAfter5s}
+#    click element   ${Elements_DB_Button_VisibleAfter5s}
+#
+#TC6
+#    Open LinkedinPage   ${SiteUrl}   ${Browser}
+#    Click Element       ${Elements}
+#    Scroll
+#    Click Element       ${Elements_A,F&W}
+#    Click Element       ${Elements_A,F&W_Alert}
+#    Click Element   ${A,F&W_Alert_Button_Alert}
+#    Handle Alert
+#    Click Button   ${A,F&W_Alert_Button_Alert5s}
+#    Sleep    ${delay}
+#    Handle Alert
+#    Click Button   ${A,F&W_Alert_Button_AlertConfirm}
+#    Alert Should Be Present   Do you confirm action?   DISMISS
+#    Element Should Contain    ${A,F&W_Alert_ConfirmResult}    You selected Cancel
+#    Click Button   ${A,F&W_Alert_Button_AlertPrompt}
+#    Input Text Into Alert    ${FullName}
+#    Element Should Contain     ${A,F&W_Alert_PromptResult}   You entered ${FullName}
+#
+#TC7
+#    Open LinkedinPage   ${SiteUrl}   ${Browser}
+#    Click Element       ${Elements}
+#    Scroll
+#    Click Element       ${Elements_A,F&W}
+#    Click Element       ${Elements_A,F&W_Frames}
+#    Select Frame        ${A,F&W_SelectFrame}
+#    Current Frame Should Contain    This is a sample page
+#    Unselect Frame
+#    Scroll
+#    Click Element       ${Elements_A,F&NestedFrames}
+#    Select Frame        ${A,F&W_SelectFrame}
+#    Current Frame Should Contain    Parent frame
+#    Select Frame        ${A,F&W_SelectFrameChild}
+#    Current Frame Should Contain    Child Iframe
+#
+#TC8
+#    Open LinkedinPage   ${SiteUrl}   ${Browser}
+#    Click Element       ${Elements}
+#    Scroll
+#    Click Element       ${Elements_A,F&W}
+#    Click Element       ${Elements_A,F&W_BrowserWindows}
+#    Click Element       ${A,F&W_BW_Button_NewTab}
+#    Select Window       NEW
+#    Page Should Contain    This is a sample page
+#    Close Window
+
+
+#TC9
+#    Open LinkedinPage   ${SiteUrl}   ${Browser}
+#    Click Element       ${Elements}
+#    Scroll
+#    Click Element       ${Elements_A,F&W}
+#    Click Element       ${Elements_A,F&W_BrowserWindows}
+#    Click Element       ${A,F&W_BW_Button_NewWindow}
+#    @{windowhanl}=  Get Window Handles
+#    Log To Console   @{windowhanl}
+#    FOR  ${i}   IN    @{windowhanl}
+#    Select Window        ${i}
+#    ${URLNew}  Get Location
+#    EXIT FOR LOOP IF  '${URLNew}'=='https://demoqa.com/sample'
+#    END
+#    Page Should Contain    This is a sample page
+#    Close All Browsers
+#
+#TC10
+#    Open LinkedinPage   ${SiteUrl}   ${Browser}
+#    ${loc1}  get location
+#    log to console  ${loc1}
+#    Click Element       ${Elements}
+#    sleep  ${Delay}
+#    go back
+#    ${loc2}  get location
+#    log to console  ${loc2}
+#    should be equal as strings    '${loc1}'     '${loc2}'
+#
+#
+#
+#TC11
+#    Open LinkedinPage   ${SiteUrl}   ${Browser}
+#    Click Element       ${Elements}
+#    Scroll
+#    Click Element       ${Elements_Buttons}
+#    Double Click Element   ${Elements_Buttons_Button_DoubleClick}
+#    Element Should Contain    ${Elements_Buttons_doubleClickMess}     You have done a double click
+#    Open Context Menu  ${Elements_Buttons_Button_RightClick}
+#    Element Should Contain    ${Elements_Buttons_Button_rightClickMess}   You have done a right click
+#
+#TC12
+#    Open LinkedinPage   https://www.demoqa.com/tool-tips   ${Browser}
+#    Mouse Over   ${Button_Hover}
+#    Page Should Contain    You hovered over the Button
+#
+#TC13
+#    Open LinkedinPage   https://www.demoqa.com/links   ${Browser}
+#    ${NumberLink}=  get element count  //p//a
+#    log to console   ${NumberLink}
+#    FOR    ${j}    IN RANGE   1   ${NumberLink}
+#       ${LinkText}=  get text   (//p//a)[${j}]
+#        log to console  ${LinkText}
+#    END
+#    Log    Exited
+#
+#For Test
+#
+#   : FOR    ${i}    IN RANGE    5
+#    log to console  ${i}
+#              : FOR    ${j}    IN RANGE    ${i}
+#              log to console  *
+#                END
+#    END
+TC14
+    Open LinkedinPage   https://www.demoqa.com/webtables   ${Browser}
+    sleep   ${delay}
+    Click Element   //span[@id='edit-record-1']
+    Input Text   ${WebTable_Input_FirstName}  ${FisrtName}
+    Input Text   ${WebTable_Input_LastName}  ${LastName}
+    Input Text   ${WebTable_Input_UserEmail}   ${Email}
+    Input Text   ${WebTable_Input_Age}   ${Age}
+    Input Text   ${WebTable_Input_Salary}   ${Salary}
+    Input Text   ${WebTable_Input_Department}   ${Department}
+    Click Button   ${Button_Submit}
+    ${data}  get text   ${WebTable_Row1}
+    log to console  ${data}
+    Element Should Contain   ${WebTable_Row1}   ${data}
+
